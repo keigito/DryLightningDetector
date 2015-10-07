@@ -1,0 +1,97 @@
+﻿@model DryLightning.Models.UserLocationCreateDTO
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create A New Monitor Location</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.UserId);
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="UserLocationName">Location Name <a href="#" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#openNameModal"></a></label> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserLocationName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserLocationName, "", new { @class = "text-danger" })
+            </div>
+            <div class="modal fade" id="openNameModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Enter a name for your location so you can identify where the dry lightning is taking place.</p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="UserLocationName">Latitude <a href="#" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#latLonModal"></a></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="UserLocationName">Longitude <a href="#" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#latLonModal"></a></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+            </div>
+            <div class="modal fade" id="latLonModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Use Google Maps to find the latitude and longitude of your desired location.</p>
+                            <p>Open Google Maps, right-click the location you wish to register, and click "What's here?" </p>
+                            <p>A small window at the bottom shows the latitude (the first number) and longitude (the second number). Enter these numbers.</p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="UserLocationName">Detection Radius <a href="#" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#radiusModal"></a></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Radius, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Radius, "", new { @class = "text-danger" })
+            </div>
+            <div class="modal fade" id="radiusModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>The radius determines the size of the lightning strike monitoring area around the location you specify.</p>
+                            <p>For example, if you want the DryLightningDetector to monitor dry lightnings within 15 miles of a specific location, enter 15. The default value is a 10 mile radius.</p>
+                            <p>Note that a larger set radii monitors a broader area, but also increases the change of a false alert.</p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "DryLightningDetector";
+}
+<style>
+    body {
+    background: url('../../Content/Img/Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    }
+</style>
+<div class="jumbotron text-center">
+    <h2 class="home_text">Don't miss the next lightning photo opportunity.<br />Get real-time "dry lightning" alert near you.</h2><br />
+    <div class="home_text">
+        @Html.ActionLink("Register", "Register", "Account", null, new { @class="btn btn-primary", @style= "background-color: #4D3074; border-color: #FFFFFF" })<br />
+        Already a member? 
+        @Html.ActionLink("Log in.", "Login", "Account")
+    </div>
+    <div class="home_text">
+        Dry lightning are one of the most ideal conditions for lightning photography, but are difficult to track. The <spam>DryLightningDetector</spam> is designed to help you capture these majectic moments by providing you with real-time "dry lightning alert" for locations that you specify. Next time the dry lighting strikes, just grab your gear, go to your favorite location, and snap away!
+    </div>
+</div>
+
